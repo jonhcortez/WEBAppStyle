@@ -5,8 +5,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Cliente\**" />
+    <Compile Remove="Models\VendaPrazo\**" />
+    <Content Remove="Models\Cliente\**" />
+    <Content Remove="Models\VendaPrazo\**" />
+    <EmbeddedResource Remove="Models\Cliente\**" />
+    <EmbeddedResource Remove="Models\VendaPrazo\**" />
+    <None Remove="Models\Cliente\**" />
+    <None Remove="Models\VendaPrazo\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Estoque\index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Estoque\index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
 </Project>

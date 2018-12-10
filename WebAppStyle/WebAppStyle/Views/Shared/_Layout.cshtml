@@ -1,9 +1,81 @@
 ﻿<!DOCTYPE html>
-<html>
+<html class="no-js" lang="pt-bt">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebAppStyle</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewData["Title"] - Self Stock</title>
+    <meta name="description" content="Self Stock">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
+    <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="css/lib/datatable/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
+
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+    <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
+
+    <style>
+        #weatherWidget .currentDesc {
+            color: #ffffff !important;
+        }
+
+        .traffic-chart {
+            min-height: 335px;
+        }
+
+        #flotPie1 {
+            height: 150px;
+        }
+
+            #flotPie1 td {
+                padding: 3px;
+            }
+
+            #flotPie1 table {
+                top: 20px !important;
+                right: -10px !important;
+            }
+
+        .chart-container {
+            display: table;
+            min-width: 270px;
+            text-align: left;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        #flotLine5 {
+            height: 105px;
+        }
+
+        #flotBarChart {
+            height: 150px;
+        }
+
+        #cellPaiChart {
+            height: 160px;
+        }
+    </style>
+
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -17,58 +89,178 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">WebAppStyle</a>
+    @*<nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">SelfStock</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a asp-area="" asp-controller="Estoque" asp-action="Index">Index</a></li>
+                        @*<li><a asp-area="" asp-controller="Home" asp-action="Index">Inicio</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="About">Sobre</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contato</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Fornecedor">Fornecedor</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="ItemCompra">ItemCompra</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="ItemVenda">ItemVenda</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="NotaCompra">NotaCompra</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="NotaVenda">NotaVenda</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Produto">Produto</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Usuario">Usuario</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="VendaPrazo">VendaPrazo</a></li>@
+                    </ul>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
+        </nav>*@
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+
+                    <li class="active">
+                        <a href="#"><i class="menu-icon fa fa-laptop"></i>INÍCIO</a>
+                    </li>
+                    <li class="menu-title">Menu</li>
+
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-shopping-cart"></i>ASPNET</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-ticket"></i><a asp-area="" asp-controller="Home" asp-action="Index">Inicio</a></li>
+                            <li><i class="fa fa-ticket"></i><a asp-area="" asp-controller="Home" asp-action="About">Sobre</a></li>
+                            <li><i class="fa fa-ticket"></i><a asp-area="" asp-controller="Home" asp-action="Contact">Contato</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-shopping-cart"></i>Estoque</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-ticket"></i><a href="produto.html">Produto</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tags"></i>Fiscal</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-tag"></i><a href="#">Nota fiscal</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-dollar"></i>Financeiro</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-archive"></i><a href="#">Vendas a prazo</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-id-card-o"></i>Manipuladores</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-users"></i><a href="#">Usuário</a></li>
+                            <li><i class="fa fa-users"></i><a href="#">Cliente</a></li>
+                            <li><i class="fa fa-users"></i><a href="#">Fornecedor</a></li>
+                            <li><i class="fa fa-users"></i><a href="#">Funcionário</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-title">Configurações</li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-sign-in"></i>Conta</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-user"></i><a href="#">Conta</a></li>
+                            <li><i class="menu-icon fa fa-sign-in"></i><a href="#">Bloquear</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-gear"></i>Aplicação</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-sign-in"></i><a href="#">Informações</a></li>
+                            <li><i class="menu-icon fa fa-info-circle"></i><a href="#">Wiki</a></li>
+                            <li><i class="menu-icon fa fa-comments-o"></i><a href="#">Suporte</a></li>
+                            <li><i class="menu-icon fa fa-circle-o"></i><a href="#">Versão 1.0</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
+        </nav>
+    </aside>
+    <div id="right-panel" class="right-panel">
+        <header id="header" class="header">
+            <div class="top-left">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Logo"></a>
+                    <a class="navbar-brand hidden" href="#"><img src="images/logo2.png" alt="Logo"></a>
+                    <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+                </div>
+            </div>
+            <div class="top-right">
+                <div class="header-menu">
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i>Meu perfil</a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-cog"></i>Configurações</a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-power-off"></i>Sair</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <partial name="_CookieConsentPartial" />
+
+        <div class="container body-content">
+
+            @{
+                // Renderização das páginas
+                RenderBody();
+            }
         </div>
-    </nav>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+        <environment include="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+            </script>
+            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                    crossorigin="anonymous"
+                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+            </script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>
 
-    <partial name="_CookieConsentPartial" />
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2018 - WebAppStyle</p>
-        </footer>
-    </div>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+            <script src="js/main.js"></script>
 
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+            <script asp-append-version="true" src="~/js/lib/data-table/datatables.min.js"></script>
+            <script asp-append-version="true" src="~/js/lib/data-table/dataTables.bootstrap.min.js"></script>
+            <script asp-append-version="true" src="~/js/lib/data-table/dataTables.buttons.min.js"></script>
+            <script asp-append-version="true" src="~/js/lib/data-table/buttons.bootstrap.min.js"></script>
+            <script asp-append-version="true" src="~/js/lib/data-table/jszip.min.js"></script>
+            <script asp-append-version="true" src="~/js/lib/data-table/vfs_fonts.js"></script>
+            <script asp-append-version="true" src="~/js/lib/data-table/buttons.html5.min.js"></script>
+            <script asp-append-version="true" src="~/js/lib/data-table/buttons.print.min.js"></script>
+            <script asp-append-version="true" src="~/js/lib/data-table/buttons.colVis.min.js"></script>
+            <script asp-append-version="true" src="~/js/init/datatables-init.js"></script>
+        </environment>
 
-    @RenderSection("Scripts", required: false)
+        @RenderSection("Scripts", required: false)
 </body>
 </html>
